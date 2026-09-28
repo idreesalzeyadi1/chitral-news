@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.serif-heading,
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Rich article content (public site + editor) ---------- */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #374151;
+  word-wrap: break-word;
+}
+.article-content > * + * { margin-top: 1rem; }
+.article-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; line-height: 1.3;
+  color: #111827; margin-top: 1.75rem;
+}
+.article-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700; line-height: 1.35;
+  color: #111827; margin-top: 1.5rem;
+}
+.article-content strong { font-weight: 700; color: #111827; }
+.article-content em { font-style: italic; }
+.article-content u { text-decoration: underline; }
+.article-content s { text-decoration: line-through; }
+.article-content a { color: #D91414; text-decoration: underline; }
+.article-content ul { list-style: disc; padding-left: 1.5rem; }
+.article-content ol { list-style: decimal; padding-left: 1.5rem; }
+.article-content li + li { margin-top: 0.35rem; }
+.article-content li > p { margin: 0; }
+.article-content blockquote {
+  border-left: 4px solid #D91414;
+  background: #f9fafb;
+  color: #4B5563;
+  font-style: italic;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.25rem auto;
+  display: block;
+}
+.article-content img.ProseMirror-selectednode { outline: 3px solid #D91414; }
+
+/* Editor placeholder */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #9ca3af;
+  pointer-events: none;
+  height: 0;
+}
+
+/* ---------- Urdu / right-to-left ---------- */
+.urdu {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif !important;
+  line-height: 2.2 !important;
+  letter-spacing: 0 !important;
+}
+.site-urdu {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
+}
+.article-content.urdu { font-size: 1.2rem; line-height: 2.4 !important; }
+.article-content.urdu h2, .article-content.urdu h3 { line-height: 2.1 !important; }
+.article-content[dir='rtl'] ul,
+.article-content[dir='rtl'] ol { padding-left: 0; padding-right: 1.5rem; }
+.article-content[dir='rtl'] blockquote {
+  border-left: 0; border-right: 4px solid #D91414; border-radius: 0.5rem 0 0 0.5rem;
+}
+.ProseMirror[dir='rtl'] p.is-editor-empty:first-child::before { float: right; }
